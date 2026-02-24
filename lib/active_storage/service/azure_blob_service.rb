@@ -124,7 +124,7 @@ module ActiveStorage
       content_disposition = content_disposition_with(type: disposition, filename: filename) if disposition && filename
 
       # use put_blob operation if composing a new blob from a single existing blob
-      if source_keys.length == 1 
+      if source_keys.length == 1
         client.put_blob(destination_key, source_keys[0], metadata: custom_metadata)
       else
         client.create_append_blob(

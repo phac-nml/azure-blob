@@ -375,10 +375,10 @@ module AzureBlob
       headers = {
         "Content-Length": 0,
         "x-ms-copy-source": source_uri.to_s,
-        "x-ms-source-range": "bytes=#{index * block_size}-#{[(index + 1) * block_size - 1, source_size - 1].min}",
+        "x-ms-source-range": "bytes=#{index * block_size}-#{[ (index + 1) * block_size - 1, source_size - 1 ].min}",
       }.merge(additional_headers(options))
 
-      Http.new(uri, headers, signer:, **options.slice(:metadata, :tags)).put
+      Http.new(uri, headers, signer:).put
 
       block_id
     end
